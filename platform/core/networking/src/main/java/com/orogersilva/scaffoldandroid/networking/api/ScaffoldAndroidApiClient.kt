@@ -1,0 +1,3 @@
+package com.orogersilva.scaffoldandroid.networking.api
+
+interface ScaffoldAndroidApiClient

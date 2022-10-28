@@ -1,0 +1,136 @@
+name: Scaffold Android
+
+on:
+  push:
+    branches: [ trunk ]
+  pull_request:
+    branches: [ trunk ]
+
+jobs:
+
+  staticcodeanalysis:
+
+    name: Static Code Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+      - name: Formatting code analysis
+        run: ./gradlew lintKotlin
+      - name: Structural code analysis
+        run: ./gradlew detekt
+      - name: Android Lint code analysis
+        run: ./gradlew lintDebug
+
+  build:
+
+    name: Build
+    needs: staticcodeanalysis
+    runs-on: ubuntu-latest
+    env:
+      STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+      - name: Build
+        run: ./gradlew assembleDebug
+
+  unittests:
+
+    name: Unit Tests
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+      - name: Unit testing
+        run: ./gradlew testDebugUnitTest
+
+#  screenshottests:
+#
+#    name: Screenshot Tests
+#    needs: unittests
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: set up JDK 11
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: 11
+#      - name: Change wrapper permissions
+#        run: chmod +x ./gradlew
+#      - name: Screenshot testing
+#        run: ./gradlew verifyPaparazziDebug --tests "*screen*" -Pscreenshot
+
+  instrumentedtests:
+
+    name: Instrumented Tests
+    needs: screenshottests
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+      - name: Instrumentation Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew connectedAndroidTest
+
+  generatedependencygraph:
+
+    name: Generate Dependency Graph
+    needs: instrumentedtests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
+
+      - name: Generate Dependency Graph
+        run: ./gradlew projectDependencyGraph
+
+      - name: Commit
+        run: |
+          git config --local user.email 'action@github.com'
+          git config --local user.name 'GitHub Action'
+          git add . && git diff --quiet && git diff --staged --quiet || git commit -am 'docs: Updating dependency graph'
+
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

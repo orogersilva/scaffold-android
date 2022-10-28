@@ -1,0 +1,69 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+
+    namespace 'com.orogersilva.scaffoldandroid.networking'
+
+    compileSdk buildConfig.compileSdk
+
+    defaultConfig {
+
+        minSdk buildConfig.minSdk
+        targetSdk buildConfig.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "String", "BASE_API_URL", "\"https://baseurl.com\""
+    }
+
+    buildTypes {
+
+        debug {
+
+            buildConfigField "Boolean", "IS_DEBUG_BUILD", "true"
+            buildConfigField "Boolean", "IS_RELEASE_BUILD", "false"
+        }
+
+        release {
+
+            minifyEnabled false
+
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "Boolean", "IS_DEBUG_BUILD", "false"
+            buildConfigField "Boolean", "IS_RELEASE_BUILD", "true"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    api project(':platform:core:data')
+
+    debugImplementation libs.chucker.core
+    releaseImplementation libs.chucker.noop
+    implementation libs.dagger.hilt.android
+    kapt libs.dagger.hilt.compiler
+    implementation libs.kotlin.serialization.core
+    api libs.moshi.core
+    kapt libs.moshi.kotlincodegen
+    implementation libs.okhttp.loggingInterceptor
+    implementation libs.retrofit.converterMoshi
+    api libs.retrofit.core
+    implementation libs.timber.core
+}

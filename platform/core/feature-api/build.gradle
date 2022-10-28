@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+
+    namespace 'com.orogersilva.scaffoldandroid.featureapi'
+
+    compileSdk buildConfig.compileSdk
+
+    defaultConfig {
+
+        minSdk buildConfig.minSdk
+        targetSdk buildConfig.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion libs.versions.androidComposeCompilerVersion.get()
+    }
+}
+
+dependencies {
+
+    api platform(libs.android.compose.billOfMaterials)
+
+    api libs.android.compose.ui
+    api libs.android.hilt.navigationCompose
+    api libs.android.compose.navigation
+}
