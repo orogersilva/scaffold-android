@@ -17,6 +17,8 @@
 
     <issue id="LockedOrientationActivity" severity="ignore" />
 
+    <issue id="MonochromeLauncherIcon" severity="ignore" />
+
     <issue id="Overdraw" severity="ignore" />
 
     <issue id="PluralsCandidate" severity="ignore" />
