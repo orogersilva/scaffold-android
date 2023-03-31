@@ -22,6 +22,7 @@ moshiVersion = "1.14.0"
 okhttpVersion = "4.10.0"
 retrofitVersion = "2.9.0"
 timberVersion = "5.0.1"
+turbineVersion = "0.12.3"
 twitterComposeRulesVersion = "0.0.26"
 
 [libraries]
@@ -75,5 +76,7 @@ okhttp-mockWebServer = { group = "com.squareup.okhttp3", name = "mockwebserver",
 
 retrofit-converterMoshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofitVersion" }
 retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
+
+turbine-core = { group = "app.cash.turbine", name = "turbine", version.ref = "turbineVersion" }
 
 timber-core = { group = "com.jakewharton.timber", name = "timber", version.ref = "timberVersion" }
