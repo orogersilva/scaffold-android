@@ -118,4 +118,6 @@ dependencies {
     kapt libs.dagger.hilt.compiler
     debugImplementation libs.leakCanary.android
     implementation libs.timber.core
+
+    androidTestImplementation project(':platform:testing')
 }
