@@ -19,23 +19,24 @@ digraph {
 
   # Dependencies
 
+  ":app" -> ":platform:testing" [style=dotted]
   ":app" -> ":app"
   ":app" -> ":feature:new-feature" [style=dotted]
-  ":feature:new-feature" -> ":feature:new-feature-api"
-  ":feature:new-feature" -> ":feature:new-feature"
-  ":feature:new-feature" -> ":platform:testing" [style=dotted]
   ":feature:new-feature-api" -> ":platform:core:feature-api"
   ":feature:new-feature-api" -> ":platform:core:networking"
   ":feature:new-feature-api" -> ":platform:core:system"
   ":feature:new-feature-api" -> ":platform:core:ui"
   ":feature:new-feature-api" -> ":feature:new-feature-api"
+  ":feature:new-feature" -> ":feature:new-feature-api"
+  ":feature:new-feature" -> ":feature:new-feature"
+  ":feature:new-feature" -> ":platform:testing" [style=dotted]
   ":platform:testing" -> ":platform:testing"
   ":platform:testing" -> ":platform:core:networking" [style=dotted]
+  ":platform:core:system" -> ":platform:core:system"
   ":platform:core:data" -> ":platform:core:data"
   ":platform:core:data" -> ":platform:core:ui" [style=dotted]
+  ":platform:core:ui" -> ":platform:core:ui"
   ":platform:core:feature-api" -> ":platform:core:feature-api"
   ":platform:core:networking" -> ":platform:core:data"
   ":platform:core:networking" -> ":platform:core:networking"
-  ":platform:core:system" -> ":platform:core:system"
-  ":platform:core:ui" -> ":platform:core:ui"
 }
