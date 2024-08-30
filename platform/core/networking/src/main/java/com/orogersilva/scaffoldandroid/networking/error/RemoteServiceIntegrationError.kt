@@ -1,9 +1,10 @@
 package com.orogersilva.scaffoldandroid.networking.error
 
 sealed class RemoteServiceIntegrationError : Throwable() {
-
     object ClientOrigin : RemoteServiceIntegrationError()
+
     object RemoteSystem : RemoteServiceIntegrationError()
+
     object UnexpectedResponse : RemoteServiceIntegrationError()
 
     override fun toString(): String =

@@ -5,7 +5,6 @@ import okhttp3.mockwebserver.MockWebServer
 import org.junit.rules.ExternalResource
 
 class RestInfrastructureRule : ExternalResource() {
-
     lateinit var server: MockWebServer
 
     override fun before() {
@@ -20,12 +19,15 @@ class RestInfrastructureRule : ExternalResource() {
         super.after()
     }
 
-    fun restScenario(statusCode: Int, response: String = "") {
+    fun restScenario(
+        statusCode: Int,
+        response: String = "",
+    ) {
         server.enqueue(
             MockResponse().apply {
                 setResponseCode(statusCode)
                 setBody(response)
-            }
+            },
         )
     }
 }

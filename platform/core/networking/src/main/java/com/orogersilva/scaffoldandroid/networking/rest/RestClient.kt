@@ -12,32 +12,36 @@ import okhttp3.logging.HttpLoggingInterceptor
 import timber.log.Timber
 
 object RestClient {
-
     fun <T> getApiClient(
         context: Context,
         serviceClass: Class<T>,
-        baseEndpoint: String
+        baseEndpoint: String,
     ): T {
-        val chuckerCollector = ChuckerCollector(
-            context = context,
-            showNotification = true,
-            retentionPeriod = RetentionManager.Period.ONE_HOUR
-        )
-
-        val client = OkHttpClient.Builder()
-            .addInterceptor(
-                ChuckerInterceptor.Builder(context)
-                    .collector(chuckerCollector)
-                    .maxContentLength(250000L)
-                    .redactHeaders(emptySet())
-                    .alwaysReadResponseBody(false)
-                    .build()
+        val chuckerCollector =
+            ChuckerCollector(
+                context = context,
+                showNotification = true,
+                retentionPeriod = RetentionManager.Period.ONE_HOUR,
             )
 
+        val client =
+            OkHttpClient
+                .Builder()
+                .addInterceptor(
+                    ChuckerInterceptor
+                        .Builder(context)
+                        .collector(chuckerCollector)
+                        .maxContentLength(250000L)
+                        .redactHeaders(emptySet())
+                        .alwaysReadResponseBody(false)
+                        .build(),
+                )
+
         if (!IS_RELEASE_BUILD) {
-            val loggingInterceptor = HttpLoggingInterceptor { message ->
-                Timber.tag("OkHttp").d(message)
-            }
+            val loggingInterceptor =
+                HttpLoggingInterceptor { message ->
+                    Timber.tag("OkHttp").d(message)
+                }
 
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 

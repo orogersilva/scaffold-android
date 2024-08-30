@@ -35,76 +35,81 @@ fun GenericDialog(
     onDismiss: () -> Unit,
     confirmLabel: String,
     onConfirm: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Box(
-        modifier = modifier
+        modifier = modifier,
     ) {
         Dialog(
-            onDismissRequest = { }
+            onDismissRequest = { },
         ) {
             Card(
                 shape = RoundedCornerShape(10.dp),
                 modifier = Modifier.padding(10.dp),
-                elevation = CardDefaults
-                    .cardElevation(8.dp)
+                elevation =
+                    CardDefaults
+                        .cardElevation(8.dp),
             ) {
                 Column(
-                    modifier = Modifier
-                        .background(Color.White)
-                        .padding(16.dp)
+                    modifier =
+                        Modifier
+                            .background(Color.White)
+                            .padding(16.dp),
                 ) {
                     Text(
                         text = title,
                         textAlign = TextAlign.Center,
                         fontSize = 20.sp,
                         color = Color.Black,
-                        modifier = Modifier
-                            .padding(5.dp)
-                            .fillMaxWidth(),
+                        modifier =
+                            Modifier
+                                .padding(5.dp)
+                                .fillMaxWidth(),
                         style = MaterialTheme.typography.labelLarge,
                         maxLines = 2,
-                        overflow = TextOverflow.Ellipsis
+                        overflow = TextOverflow.Ellipsis,
                     )
                     Text(
                         text = description,
                         textAlign = TextAlign.Center,
                         fontSize = 16.sp,
                         color = Color.Black,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(
-                                top = 10.dp,
-                                start = 25.dp,
-                                end = 25.dp
-                            ),
-                        style = MaterialTheme.typography.bodyMedium
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(
+                                    top = 10.dp,
+                                    start = 25.dp,
+                                    end = 25.dp,
+                                ),
+                        style = MaterialTheme.typography.bodyMedium,
                     )
                 }
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(10.dp),
-                    horizontalArrangement = Arrangement.SpaceAround
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(10.dp),
+                    horizontalArrangement = Arrangement.SpaceAround,
                 ) {
                     TextButton(
-                        onClick = { onDismiss.invoke() }
+                        onClick = { onDismiss.invoke() },
                     ) {
                         Text(
                             text = dismissLabel,
                             fontWeight = FontWeight.Bold,
                             color = PurpleGrey40,
-                            modifier = Modifier.padding(top = 5.dp, bottom = 5.dp)
+                            modifier = Modifier.padding(top = 5.dp, bottom = 5.dp),
                         )
                     }
                     TextButton(
-                        onClick = { onConfirm.invoke() }
+                        onClick = { onConfirm.invoke() },
                     ) {
                         Text(
                             text = confirmLabel,
                             fontWeight = FontWeight.ExtraBold,
                             color = Color.Black,
-                            modifier = Modifier.padding(top = 5.dp, bottom = 5.dp)
+                            modifier = Modifier.padding(top = 5.dp, bottom = 5.dp),
                         )
                     }
                 }
@@ -122,6 +127,6 @@ private fun GenericDialogPreview() {
         dismissLabel = "No",
         onDismiss = { },
         confirmLabel = "Yes",
-        onConfirm = { }
+        onConfirm = { },
     )
 }

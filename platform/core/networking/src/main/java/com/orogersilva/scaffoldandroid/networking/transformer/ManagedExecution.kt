@@ -1,10 +1,11 @@
 package com.orogersilva.scaffoldandroid.networking.transformer
 
-private val transformers = listOf(
-    NetworkingErrorTransformer,
-    HttpErrorTransformer,
-    SerializationErrorTransformer
-)
+private val transformers =
+    listOf(
+        NetworkingErrorTransformer,
+        HttpErrorTransformer,
+        SerializationErrorTransformer,
+    )
 
 suspend fun <T> managedExecution(target: suspend () -> T): T =
     try {

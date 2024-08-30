@@ -8,7 +8,6 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
 object NetworkingErrorTransformer : ErrorTransformer {
-
     override suspend fun transform(incoming: Throwable): Throwable =
         when {
             (!isNetworkingError(incoming)) -> incoming

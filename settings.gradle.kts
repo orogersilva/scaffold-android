@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -13,12 +15,12 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Scaffold Android"
-include ':app'
-include ':platform:core:system'
-include ':platform:core:ui'
-include ':platform:core:networking'
-include ':platform:core:data'
-include ':platform:testing'
-include ':platform:core:feature-api'
-include ':feature:new-feature-api'
-include ':feature:new-feature'
+include(":app")
+include(":platform:core:system")
+include(":platform:core:ui")
+include(":platform:core:networking")
+include(":platform:core:data")
+include(":platform:testing")
+include(":platform:core:feature-api")
+include(":feature:new-feature-api")
+include(":feature:new-feature")

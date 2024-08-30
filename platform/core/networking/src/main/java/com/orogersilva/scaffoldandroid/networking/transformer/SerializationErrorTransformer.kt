@@ -4,7 +4,6 @@ import com.orogersilva.scaffoldandroid.networking.error.RemoteServiceIntegration
 import kotlinx.serialization.SerializationException
 
 object SerializationErrorTransformer : ErrorTransformer {
-
     override suspend fun transform(incoming: Throwable): Throwable =
         when (incoming) {
             is SerializationException -> RemoteServiceIntegrationError.UnexpectedResponse

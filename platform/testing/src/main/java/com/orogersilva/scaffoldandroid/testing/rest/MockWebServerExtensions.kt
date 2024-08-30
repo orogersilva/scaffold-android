@@ -9,9 +9,11 @@ import okhttp3.mockwebserver.MockWebServer
 inline fun <reified T> MockWebServer.wireRestApi(): T {
     val url = url("/").toString()
 
-    val client = OkHttpClient.Builder()
-        .addInterceptor(HttpLoggingInterceptor())
-        .build()
+    val client =
+        OkHttpClient
+            .Builder()
+            .addInterceptor(HttpLoggingInterceptor())
+            .build()
 
     return RetrofitBuilder(url.toHttpUrl(), client)
         .create(T::class.java)

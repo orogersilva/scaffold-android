@@ -14,15 +14,14 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object ScaffoldAndroidApiClientModule {
-
     @Provides
     @Singleton
     fun provideScaffoldAndroidApiClient(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): ScaffoldAndroidApiClient =
         RestClient.getApiClient(
             context,
             ScaffoldAndroidApiClient::class.java,
-            BuildConfig.BASE_API_URL
+            BuildConfig.BASE_API_URL,
         )
 }

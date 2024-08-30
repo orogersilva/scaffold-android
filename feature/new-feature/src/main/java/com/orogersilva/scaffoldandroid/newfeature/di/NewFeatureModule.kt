@@ -10,8 +10,5 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class NewFeatureModule {
-
-    @Binds abstract fun bindNewFeature(
-        newFeatureFeature: NewFeatureFeature
-    ): NewFeatureApi
+    @Binds abstract fun bindNewFeature(newFeatureFeature: NewFeatureFeature): NewFeatureApi
 }

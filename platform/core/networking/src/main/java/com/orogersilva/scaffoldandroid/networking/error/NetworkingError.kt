@@ -1,9 +1,10 @@
 package com.orogersilva.scaffoldandroid.networking.error
 
 sealed class NetworkingError : Throwable() {
-
     object HostUnreachable : NetworkingError()
+
     object OperationTimeout : NetworkingError()
+
     object ConnectionSpike : NetworkingError()
 
     override fun toString(): String =

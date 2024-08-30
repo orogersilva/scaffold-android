@@ -9,20 +9,21 @@ import com.orogersilva.scaffoldandroid.newfeature.ui.screen.NewFeatureComposable
 import com.orogersilva.scaffoldandroid.newfeatureapi.NewFeatureApi
 import javax.inject.Inject
 
-class NewFeatureFeature @Inject constructor(
-    private val newFeatureApi: FeatureApi
-) : NewFeatureApi {
+class NewFeatureFeature
+    @Inject
+    constructor(
+        private val newFeatureApi: FeatureApi,
+    ) : NewFeatureApi {
+        private val baseRoute = "NewFeature"
 
-    private val baseRoute = "NewFeature"
+        override fun newRoute(): String = baseRoute
 
-    override fun newRoute(): String = baseRoute
-
-    override fun registerGraph(
-        navGraphBuilder: NavGraphBuilder,
-        navHostController: NavHostController
-    ) {
-        navGraphBuilder.composable(baseRoute) {
-            NewFeatureComposable(newFeatureViewModel = hiltViewModel())
+        override fun registerGraph(
+            navGraphBuilder: NavGraphBuilder,
+            navHostController: NavHostController,
+        ) {
+            navGraphBuilder.composable(baseRoute) {
+                NewFeatureComposable(newFeatureViewModel = hiltViewModel())
+            }
         }
     }
-}

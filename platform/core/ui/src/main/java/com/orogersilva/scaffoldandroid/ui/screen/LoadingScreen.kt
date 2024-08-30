@@ -15,25 +15,25 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun LoadingSubScreen(
-    modifier: Modifier = Modifier
-) {
+fun LoadingSubScreen(modifier: Modifier = Modifier) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = modifier
-            .fillMaxSize()
-            .background(Color.Transparent)
+        modifier =
+            modifier
+                .fillMaxSize()
+                .background(Color.Transparent),
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .size(96.dp)
-                .background(
-                    color = Color.White,
-                    shape = RoundedCornerShape(16.dp)
-                )
+            modifier =
+                Modifier
+                    .size(96.dp)
+                    .background(
+                        color = Color.White,
+                        shape = RoundedCornerShape(16.dp),
+                    ),
         ) {
             CircularProgressIndicator()
         }
@@ -42,6 +42,6 @@ fun LoadingSubScreen(
 
 @Preview
 @Composable
-fun LoadingSubScreenPreview() {
+private fun LoadingSubScreenPreview() {
     LoadingSubScreen()
 }

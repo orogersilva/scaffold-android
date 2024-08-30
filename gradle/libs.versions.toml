@@ -1,68 +1,81 @@
 [versions]
-androidActivityVersion = "1.8.2"
-androidComposeBillOfMaterialsVersion = "2024.04.00"
-androidComposeCompilerVersion = "1.5.11"
-androidGradlePluginVersion = "8.3.1"
+androidActivityVersion = "1.9.1"
+androidComposeBillOfMaterialsVersion = "2024.08.00"
+androidGradlePluginVersion = "8.6.0"
 androidHiltNavigationComposeVersion = "1.2.0"
-androidKtxVersion = "1.12.0"
+androidKtxVersion = "1.13.1"
+#noinspection GradleDependency
 androidLifecycleVersion = "2.7.0"
-androidNavigationComposeVersion = "2.7.7"
-androidTestCoreVersion = "1.5.0"
-androidTestRunnerVersion = "1.5.2"
+#noinspection GradleDependency
+androidMaterial3Version = "1.3.0-rc01"
+androidNavigationComposeVersion = "2.8.0-rc01"
+androidRoomVersion = "2.6.1"
+androidTestCoreVersion = "1.6.1"
+androidTestRunnerVersion = "1.6.2"
+androidUiAutomatorVersion = "2.3.0"
 chuckerVersion = "4.0.0"
-coroutinesVersion = "1.8.0"
+composeLintsVersion = "1.3.1"
+coroutinesVersion = "1.8.1"
 daggerHiltVersion = "2.51.1"
-espressoVersion = "3.5.1"
+espressoVersion = "3.6.1"
+junitExtVersion = "1.2.1"
 junitVersion = "4.13.2"
+kotlinSerializationPluginVersion = "2.0.0"
 kotlinSerializationVersion = "1.6.3"
 kotlinCollectionsImmutableVersion = "0.3.7"
-kotlinVersion = "1.9.23"
-leakCanaryVersion = "2.13"
-moshiVersion = "1.15.0"
+kotlinterVersion = "4.4.1"
+kotlinVersion = "2.0.0"
+kspVersion = "2.0.0-1.0.21"
+leakCanaryVersion = "2.14"
+moshiVersion = "1.15.1"
 okhttpVersion = "4.12.0"
+paparazziVersion = "1.3.4"
 retrofitVersion = "2.11.0"
 timberVersion = "5.0.1"
 turbineVersion = "1.1.0"
-twitterComposeRulesVersion = "0.0.26"
 
 [libraries]
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePluginVersion" }
-dagger-hilt-android-gradle-plugin = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "daggerHiltVersion" }
 kotlin-collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable-jvm", version.ref = "kotlinCollectionsImmutableVersion" }
-kotlin-serialization = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "kotlinVersion" }
-twitter-compose-rules = { group = "com.twitter.compose.rules", name = "ktlint", version.ref = "twitterComposeRulesVersion" }
+paparazzi-plugin = { group = "app.cash.paparazzi", name = "paparazzi-gradle-plugin", version.ref = "paparazziVersion" }
 
 android-compose-billOfMaterials = { group = "androidx.compose", name = "compose-bom", version.ref = "androidComposeBillOfMaterialsVersion" }
-android-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+android-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref= "androidMaterial3Version" }
 android-compose-ui = { group = "androidx.compose.ui", name = "ui" }
 android-compose-uiTooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 android-compose-uiToolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 android-test-compose = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-android-test-composeManifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+android-test-compose-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 
 android-activity-activityCompose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidActivityVersion" }
 android-compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidNavigationComposeVersion" }
 android-hilt-navigationCompose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidHiltNavigationComposeVersion" }
 android-ktx-core = { group = "androidx.core", name = "core-ktx", version.ref = "androidKtxVersion" }
+android-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidLifecycleVersion" }
 android-lifecycle-viewModelKtx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidLifecycleVersion" }
 android-test-core = { group = "androidx.test", name = "core-ktx", version.ref = "androidTestCoreVersion" }
 android-test-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoVersion" }
-android-test-hilt = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "daggerHiltVersion" }
+android-test-room = { group = "androidx.room", name = "room-testing", version.ref = "androidRoomVersion" }
 android-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidTestRunnerVersion" }
+android-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "androidUiAutomatorVersion" }
 
 chucker-core = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chuckerVersion" }
 chucker-noop = { group = "com.github.chuckerteam.chucker", name = "library-no-op", version.ref = "chuckerVersion" }
+
+compose-lints = { group = "com.slack.lint.compose", name = "compose-lint-checks", version.ref = "composeLintsVersion" }
 
 coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutinesVersion" }
 coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesVersion" }
 
 dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "daggerHiltVersion" }
-dagger-hilt-androidCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "daggerHiltVersion" }
+dagger-hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "daggerHiltVersion" }
 dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "daggerHiltVersion" }
+dagger-hilt-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "daggerHiltVersion" }
 
 junit-core = { group = "junit", name = "junit", version.ref = "junitVersion" }
+junit-ext = { group = "androidx.test.ext", name = "junit", version.ref = "junitExtVersion" }
 
-kotlin-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinSerializationVersion" }
+kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializationVersion" }
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit", version.ref = "kotlinVersion" }
 
 leakCanary-android = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakCanaryVersion" }
@@ -80,3 +93,15 @@ retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.r
 turbine-core = { group = "app.cash.turbine", name = "turbine", version.ref = "turbineVersion" }
 
 timber-core = { group = "com.jakewharton.timber", name = "timber", version.ref = "timberVersion" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePluginVersion" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePluginVersion" }
+android-test = { id = "com.android.test", version.ref = "androidGradlePluginVersion" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlinVersion" }
+dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "daggerHiltVersion" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinSerializationPluginVersion" }
+kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinterVersion" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
+org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+paparazzi = { id = "app.cash.paparazzi", version.ref = "paparazziVersion" }

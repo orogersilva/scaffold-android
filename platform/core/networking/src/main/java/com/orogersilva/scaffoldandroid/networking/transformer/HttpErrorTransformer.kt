@@ -4,7 +4,6 @@ import com.orogersilva.scaffoldandroid.networking.error.RemoteServiceIntegration
 import retrofit2.HttpException
 
 object HttpErrorTransformer : ErrorTransformer {
-
     override suspend fun transform(incoming: Throwable): Throwable =
         when (incoming) {
             is HttpException -> translateUsingStatusCode(incoming.code())

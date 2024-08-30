@@ -7,18 +7,16 @@ import com.orogersilva.scaffoldandroid.featureapi.register
 import com.orogersilva.scaffoldandroid.newfeatureapi.NewFeatureApi
 
 @Composable
-fun NavGraph(
-    newFeatureApi: NewFeatureApi
-) {
+fun NavGraph(newFeatureApi: NewFeatureApi) {
     val navController = rememberNavController()
 
     NavHost(
         navController = navController,
-        startDestination = newFeatureApi.newRoute()
+        startDestination = newFeatureApi.newRoute(),
     ) {
         register(
             newFeatureApi,
-            navController
+            navController,
         )
     }
 }

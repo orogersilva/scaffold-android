@@ -10,7 +10,7 @@ fun NoConnectivityDialog(
     dismissLabel: String,
     onDismiss: () -> Unit,
     confirmLabel: String,
-    onConfirm: () -> Unit
+    onConfirm: () -> Unit,
 ) {
     GenericDialog(
         title = stringResource(id = R.string.no_internet_dialog_title),
@@ -18,7 +18,7 @@ fun NoConnectivityDialog(
         dismissLabel = dismissLabel,
         onDismiss = onDismiss,
         confirmLabel = confirmLabel,
-        onConfirm = onConfirm
+        onConfirm = onConfirm,
     )
 }
 
@@ -29,6 +29,6 @@ private fun NoConnectivityDialogPreview() {
         "Cancel",
         onDismiss = { },
         confirmLabel = "Try again",
-        onConfirm = { }
+        onConfirm = { },
     )
 }

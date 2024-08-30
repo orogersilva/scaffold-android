@@ -30,7 +30,7 @@
     <issue id="SmallSp" severity="ignore" />
 
     <issue id="Typos" severity="ignore" />
-    
+
     <issue id="UnusedResources" severity="ignore" />
 
     <issue id="UseCompoundDrawables" severity="ignore" />
